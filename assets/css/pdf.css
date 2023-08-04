@@ -1,0 +1,9 @@
+.mtto{
+    height: auto;
+    width: fit-content;
+    align-self: center;
+    font-size: small;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 30%;
+    color: aqua;
+}
