@@ -1,0 +1,83 @@
+<!--Header-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car parking application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+    <!-- Header-->
+    <header id="header">
+        <nav>
+            <div class="container">
+                <div class="text-center">
+                    <a href="/gateman" class="nav-brand text-dark">Gate Man control</a>
+                    
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- Header-->
+
+<!--Header-->
+    <!--Main section-->
+    <main id="site-main">
+        <div class="container">
+
+        <from action="/gateman" method="POST"> 
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Serial</th>
+                        <th>Slot Number</th>
+                        <th>Rate per Hour</th>
+                        <th>status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    <% for(var i=0;i< slots.length;i++){ %>
+
+                        <tr>
+                            <td><%=i+1 %></td>
+                            <td><%=slots[i].slotnumber%></td>
+                            <td><%=slots[i].rateperhour%></td>
+                            <td><%=slots[i].status%></td>
+                            <td>
+                                <% if(slots[i].status=="Inactive"){ %>
+                                <a class="btn border-shadow delete" data-id=<%=slots[i]._id%>>
+                        
+                                    <span class="text-gradient"><i class="fa-solid fa-play"></i></span>
+                                </a>
+                                <%}else{%>
+                                    <a class="btn border-shadow stoprent" data-id=<%=slots[i]._id%>>
+                        
+                                        <span class="text-gradient"><i class="fa-solid fa-stop"></i></span>
+                                    </a>
+                                    <%}%>
+
+                            </td>
+                        </tr>
+                        <%}%>
+                </tbody>
+            </table>
+        </from>
+    </div>
+     </main>
+    <!--Main section-->
+
+<!--Footer-->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="/js/index.js"></script>
+</body>
+</html>
+
+<!--Footer-->

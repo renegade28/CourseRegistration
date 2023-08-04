@@ -1,0 +1,109 @@
+<!--Header-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Pdf</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+    <!-- Header-->
+    <div class="pdf">
+
+    
+    <div class="header">
+       
+
+
+        <div class="motto">
+            Heaven's Light is our guide 
+        </div>
+        
+        <div class="uniname">
+            Rajshahi University Of Engineering and Technology
+        </div>
+        <p><u>Course Registration/Course Adjustment Form</u></p>
+
+        <div class="dept">
+            Computer Science And Engineering (CSE) Department
+
+        </div>
+    </div>
+
+    <div class="credentials">
+        <div class="roll-registration">Roll No:___________Registration No. with Session:__________________</div>
+        <div class="name">Name:______________________________________________________</div>
+        <div class="semester-credit">Academic session with Semester:_______Previously Earned Credit:______         </div>
+
+    </div>
+
+
+    <div class="backlogbox">
+        <div class="title">Course No. of Backlog courses</div>
+        <div class="emptybox">
+        </div>
+    </div>
+
+    <div class="coursetable">
+
+        <table class="tbcourse">
+            <thead class="thcourse">
+                <tr>
+                    <th>Course No.</th>
+                    <th style="width:60%">Course Title</th>
+                    <th>Credit</th>
+                </tr>
+            </thead>
+            <tbody> 
+                <% var sum=0;%>
+                <% for(var i=0;i< slots.length;i++){ %>
+
+                    <tr>
+                        <td><%=slots[i].name%></td>
+                        <td ><%=slots[i].title%></td>
+                        <td><%=slots[i].credit%></td>
+                    </tr>
+                    <%
+                    sum=sum+slots[i].credit%>
+                    <%}%>
+                    <tr><td></td> <td><b>Total Credit of the semester</b></td> <td><%=sum%></td></tr>
+            </tbody>
+        </table>
+  </div>
+  <div class="comment">
+    <div class="commentone">Adviser's Comment(if any)__________________________________________________</div>
+    <div class="commenttwo">___________________________________________________________________________</div>
+
+
+  </div>
+
+  <div class="signatures">
+    <div class="student">Signature of the Student</div>
+    <div class="adviser">Signature of the Adviser</div>
+    <div class="controller">Signature of the Controller</div>
+  </div>
+
+  <div class="others">
+
+    <div class="date"> Date:</div>
+    <div class="mas">Students are asked to cross out the irrelevant Terms</div>
+  </div>
+
+</div>
+
+
+
+    <a href="/api/generatepdf"class="btn border-shadow update">
+
+        <span class="text-gradient">Download Pdf</span>
+    </a>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="/js/index.js"></script>
+</body>
+</html>

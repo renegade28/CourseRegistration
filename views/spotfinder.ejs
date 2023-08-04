@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUET</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+    <!-- Header-->
+    <header id="header">
+        <nav>
+            <div class="container">
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- Header-->
+
+    <%-include('include/_navbar')%> 
+
+      <div class="selectsemester"> Semester Number:</div>
+    <div id="group" class="filtergroup">
+       
+        
+    </div>
+
+
+
+
+    <script>
+  const semester = ['1st', '2nd', '3rd', '4th', '5th', '6th','7th','8th'];
+  
+
+  // generate the radio groups        
+  const group = document.querySelector("#group");
+  
+  group.innerHTML = semester.map((size) => `<div class="radioButton">
+          <input type="radio" name="size" value="${size}" id="${size} class="rb">
+           <label for="${size}">${size}</label>
+      </div>`).join(' ');
+  
+  // add an event listener for the change event
+  const radioButtons = document.querySelectorAll('input[name="size"]');
+  for(const radioButton of radioButtons){
+      radioButton.addEventListener('change', showSelected);
+  } 
+  
+  function showSelected(e) {
+      console.log(e);
+      if (this.checked||e.key!=null) {
+         let filters=this.value+""
+        if(this.checked){
+         let filter=filters.toUpperCase();
+         localStorage.setItem("filter",filter);
+        }
+
+         let deptfilter=document.getElementById('deptname').value.toUpperCase();
+         let semfilter=localStorage.getItem("filter");
+         console.log(semfilter); 
+         console.log(deptfilter);
+         let myTable= document.getElementById('mytable');
+         let tr=myTable.getElementsByTagName('tr');
+         console.log(tr);
+         for(var i=1;i<tr.length;i++){
+            let td= tr[i].getElementsByTagName('td')[4]
+            let dptd= tr[i].getElementsByTagName('td')[6]
+            if(td){
+                //getting the value of the table values
+                let textvalue=td.innerHTML||td.textContent;
+                let textvaluedep=dptd.innerHTML||dptd.textContent;
+                console.log("Ami paoa text value "+textvaluedep);
+                if((textvalue.toUpperCase()==semfilter) && (textvaluedep.toUpperCase().indexOf(deptfilter)>-1)){
+                    tr[i].style.display="";
+
+                }
+                else{
+                    tr[i].style.display="none";
+                }
+            }
+
+
+         }
+
+
+      }
+  }
+
+    </script>
+
+
+<div class="form-group2">
+   <label for="rateperhour" class="text-light">Department:</label>
+<input type="text" name="rateperhour" id="deptname" placeholder="CSE,EEE..." onkeyup="showSelected(event)">
+
+</div<>
+
+
+
+    
+
+
+
+
+
+   <!-- Main Section-->
+   <main id="site-main">
+    <div class="container">
+        <div class="form-title text-center">
+            <h2 class="text-dark" id="roll">Courses Open For Registration for <%=roll%></h2>
+            <div id="dept" class="<%=dept%>"></div>
+            <span class="text-light"></span>
+
+
+    
+            <form action="/student" method="POST"> 
+                <table class="table" id="mytable">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Select</th>
+                            <th>Serial</th>
+                            <th>Course No</th>
+                            <th>Course Title</th>
+                            <th>Semester</th>
+                            <th>Credit</th>
+                            <th>Department</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <% for(var i=0;i< slots.length;i++){ %>
+    
+                            <tr>
+                                <td><input type="checkbox" id="<%=slots[i].name%>" class="<%=slots[i].credit%>"></td>
+                                <td><%=i+1 %></td>
+                                <td><%=slots[i].name%></td>
+                                <td><%=slots[i].title%></td>
+                                <td><%=slots[i].semester%></td>
+                                <td><%=slots[i].credit%></td>
+
+                                <td><%=slots[i].department%></td>
+
+                            </tr>
+                            <%}%>
+                    </tbody>
+                </table>
+                
+            </form>
+            <button onclick="submitForm()" class="btn border-shadow update realbtn">Submit Form</button>
+
+
+        </div>
+
+        <script src="/js/select.js"></script>
+
+
+
+
+
+
+
+<!--Main section-->
+
+
+
+
+    
+    
+    <!--Footer-->
+    <%-include('include/_footer')%>
+    
+    <!--Footer-

@@ -1,0 +1,37 @@
+<form action='/api/createcourse' method='POST' > 
+    <div class="new_slot">
+        <div class="form-group">
+            <label for="slotnumber" class="text-light">Course Name:</label>
+            <input type="text"  name="name" value="" placeholder="CSE-3200">
+
+        </div>
+        <div class="form-group">
+            <label for="coursetitle" class="text-light">Course Title:</label>
+            <input type="text"  name="title" value="" placeholder="Thesis or Project">
+
+        </div>
+
+        <div class="form-group">
+            <label for="rateperhour" class="text-light">Semester:</label>
+            <input type="text"  name="semester" value="" placeholder="">
+
+        </div>
+            
+        <div class="form-group">
+            <label for="location" class="text-light">Credit:</label>
+            <input type="number" step="any" name="credit" value="" placeholder="1.5/3/0.75">
+
+        </div>
+        <div class="form-group">
+            <label for="location" class="text-light">Department:</label>
+            <input type="text" name="department" value="" placeholder="CSE,EEE...">
+
+        </div>
+            
+
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn text-dark update">Save</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,67 @@
+<!--Header-->
+<%-include('include/_header')%>
+<!--Header-->
+
+
+
+   <!--Main section-->
+   <main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex justify-between">
+            <div class="filter">
+                <a href="/student"><i class="fas fa-angle-double-left"></i>Go Back</a>
+            </div>
+        </div>
+        <div class="form-title text-center">
+            <h2 class="text-dark">Register Course</h2>
+            <span class="text-light">Use the below form to Register Your Course </span>
+
+        </div>
+
+        <form id="update_slot" method="POST"> 
+            <div class="new_slot">
+                <div class="form-group">
+                    <label for="name" class="text-light">Course Name:</label>
+                    <input type="hidden"  name="id" value="<%=slot._id%>">
+                    <input type="text"  name="name" value="<%=slot.name%>" placeholder="" readonly >
+        
+                </div>
+        
+                <div class="form-group">
+                    <label for="rate" class="text-light">Semester:</label>
+                    <input type="text"  name="semester" value="<%=slot.semester%>" placeholder="" readonly>
+        
+                </div>
+                <div class="form-group">
+                    <label for="rate" class="text-light">Roll:</label>
+                    <input type="text"  name="roll" value="" placeholder="Please Enter your Roll">
+        
+                </div>
+                
+        
+    
+                    
+        
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn text-dark update">Save</button>
+                </div>
+            </div>
+        </form>
+
+
+
+
+    
+ </div>
+ </main>
+<!--Main section-->
+
+
+
+
+
+<!--Footer-->
+<%-include('include/_footer')%>
+
+<!--Footer-->

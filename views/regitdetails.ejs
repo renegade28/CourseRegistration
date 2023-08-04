@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUET</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+    <!-- Header-->
+    <header id="header">
+        <nav>
+            <div class="container">
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- Header-->
+
+    <div class="navcontainer">
+        <div class="menu-button">Menu</div>
+        <ul class="flexnav" data-breakpoint="800">
+            <li><a href="/">Admin Side Control</a></li>
+    
+        </ul>
+        <a href="#"><div class="profile"></div></a>
+    
+    
+    </div>
+
+   <!-- Main Section-->
+   <main id="site-main">
+    <div class="container">
+        <div class="form-title text-center">
+            <h2 class="text-dark">Registered Student for: <%=slots[0].coursename%></h2>
+            <span class="text-light">Total Student:<%=slots.length%></span>
+
+
+    
+            <form action="/student" method="POST"> 
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Serial</th>
+                            <th>Roll</th>
+                            <th>Registration Date</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <% for(var i=0;i< slots.length;i++){ %>
+    
+                            <tr>
+                                <td><%=i+1 %></td>
+                                <td><%=slots[i].roll%></td>
+                                <td><%=slots[i].createdAt%></td>
+                                
+
+                            </tr>
+                            <%}%>
+                    </tbody>
+                </table>
+            </form>
+
+        </div>
+
+
+
+
+
+
+
+<!--Main section-->
+
+
+
+
+    
+    
+    <!--Footer-->
+    <%-include('include/_footer')%>
+    
+    <!--Footer-
